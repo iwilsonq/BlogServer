@@ -8,7 +8,7 @@ const router = require('./router');
 const mongoose = require('mongoose');
 
 // DB setup
-mongoose.connect('mongodb://localhost:auth/auth');
+mongoose.connect('mongodb://localhost/journies');
 
 // App setup
 app.use(morgan('combined'));
