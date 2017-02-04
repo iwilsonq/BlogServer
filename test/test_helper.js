@@ -10,10 +10,10 @@ before(done => {
 });
 
 beforeEach(done => {
-  const { users } = mongoose.connection.collections;
+  const { users, posts } = mongoose.connection.collections;
   users.drop(() => {
-    // posts.drop(() => {
+    posts.drop(() => {
       done();
-    // });
+    });
   });
 });
