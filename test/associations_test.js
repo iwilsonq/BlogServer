@@ -1,31 +1,31 @@
 const mongoose = require('mongoose');
 const assert = require('assert');
 const User = require('../models/user');
-const Post = require('../models/post');
+const Article = require('../models/articles');
 
 describe('Associations', () => {
-  let jon, post;
+  let jon, article;
 
   beforeEach(done => {
     jon = new User({ email: 'jonsnow@gmail.com' });
-    post = new Post({
+    article = new Article({
       title: 'And now his watch has ended',
       content: 'I am now kami-sama'
     });
 
-    jon.posts.push(post);
+    jon.articles.push(article);
 
-    Promise.all([jon.save(), post.save()])
+    Promise.all([jon.save(), article.save()])
       .then(() => done());
   });
 
-  it('Saves a relation between a blogpost and a user', done => {
+  it('Saves a relation between a blogarticle and a user', done => {
     User.findOne({ email: 'jonsnow@gmail.com' })
-      .populate('Posts')
+      .populate('Articles')
       .then(user => {
-        Post.findOne({ _id: user.posts[0] })
-          .then(post => {
-            assert(post.title === 'And now his watch has ended');
+        Article.findOne({ _id: user.articles[0] })
+          .then(article => {
+            assert(article.title === 'And now his watch has ended');
             done();
           });
       })

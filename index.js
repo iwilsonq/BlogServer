@@ -11,12 +11,14 @@ const mongoose = require('mongoose');
 // DB setup
 mongoose.connect('mongodb://localhost/journies');
 
+
 app.use(express.static('public'));
 
 // App setup
 app.use(cors());
 app.use(morgan('combined'));
-app.use(bodyParser.json({type: '*/*'}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 router(app);
 
 // Server setup
