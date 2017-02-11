@@ -10,8 +10,11 @@ const articleSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'user'
   },
-  coverPhoto: {
-    type: String,
+  image: {
+    type: String
+  },
+  imageId: {
+    type: String
   },
   tags: [{
     type: String

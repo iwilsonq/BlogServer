@@ -21,5 +21,8 @@ module.exports = function(app) {
   app.post('/signup', Authentication.signup);
 
   app.get('/articles', Articles.list);
+  app.get('/articles/:title', Articles.find);
   app.post('/articles', upload.single('image'), Articles.create);
+  app.put('/articles/:id', Articles.edit);
+  app.delete('/articles/:id', Articles.destroy);
 }
