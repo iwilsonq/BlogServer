@@ -16,6 +16,9 @@ const articleSchema = new Schema({
   imageId: {
     type: String
   },
+  caption: {
+    type: String
+  },
   tags: [{
     type: String
   }],
