@@ -29,10 +29,11 @@ exports.find = (req, res) => {
 }
 
 exports.create = (req, res) => {
+  const formattedContent = JSON.parse(req.body.content).filter(p => p !== "");
   cloudinary.uploader.upload(req.file.path, result => {
     const article = new Article({
       title: req.body.title,
-      content: req.body.content,
+      content: formattedContent,
       caption: req.body.caption,
       image: result.url,
       imageId: result.public_id

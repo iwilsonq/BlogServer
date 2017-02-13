@@ -27,7 +27,7 @@ const articleSchema = new Schema({
     default: false
   },
   content: {
-    type: String,
+    type: [String],
     required: true
   },
   created: {

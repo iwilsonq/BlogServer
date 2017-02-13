@@ -18,7 +18,7 @@ app.use(express.static('public'));
 app.use(cors());
 app.use(morgan('combined'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ limit: 2000000, extended: false }));
 router(app);
 
 // Server setup
