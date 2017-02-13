@@ -9,7 +9,7 @@ const router = require('./router');
 const mongoose = require('mongoose');
 
 // DB setup
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://heroku_rn9zgv56:55dgfrq4eojm200rsan6m1lbub@ds147599.mlab.com:47599/heroku_rn9zgv56');
 
 
 app.use(express.static('public'));
