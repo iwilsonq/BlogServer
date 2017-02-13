@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "nodemon --exec 'mocha -R min'",
-    "dev": "nodemon index.js",
+    "start": "nodemon index.js",
     "clean": "rm ./public/uploads/*"
   },
   "author": "",
