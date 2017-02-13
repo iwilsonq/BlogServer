@@ -1,11 +1,8 @@
 const Article = require('../models/articles');
 const cloudinary = require('cloudinary');
+const cloudConfig = require('../config').cloudinary;
 
-cloudinary.config({
-  cloud_name: 'iwilsonq',
-  api_key: '523783848114792',
-  api_secret: 'NbwOB2G9tYRb4XtO7P-L27hHWPY'
-});
+cloudinary.config(cloudConfig);
 
 exports.list = (req, res) => {
   Article.find()
