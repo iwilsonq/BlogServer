@@ -1,9 +1,16 @@
 const jwt = require('jwt-simple');
 const User = require('../models/user');
 
+let JWT_SECRET;
+if (process.env.NODE_ENV !== 'production') {
+  JWT_SECRET = require('../config').secret;
+} else {
+  JWT_SECRET = process.env.JWT_SECRET
+}
+
 function tokenForUser(user) {
   const timestamp = new Date().getTime();
-  return jwt.encode({ sub: user.id, iat: timestamp }, process.env.JWT_SECRET);
+  return jwt.encode({ sub: user.id, iat: timestamp }, JWT_SECRET);
 }
 
 exports.signin = function(req, res, next) {

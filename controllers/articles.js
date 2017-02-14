@@ -1,7 +1,14 @@
 const Article = require('../models/articles');
 const cloudinary = require('cloudinary');
 
-cloudinary.config(process.env.CLOUDINARY_URL);
+let cloudConfig;
+if (process.env.NODE_ENV !== 'production') {
+  cloudConfig = require('../config').cloudinary;
+} else {
+  cloudConfig = process.env.CLOUDINARY_URL;
+}
+
+cloudinary.config(cloudConfig);
 
 exports.list = (req, res) => {
   Article.find()
@@ -25,6 +32,7 @@ exports.find = (req, res) => {
 
 exports.create = (req, res) => {
   const formattedContent = JSON.parse(req.body.content).filter(p => p !== "");
+  console.log()
   cloudinary.uploader.upload(req.file.path, result => {
     const article = new Article({
       title: req.body.title,
