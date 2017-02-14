@@ -1,8 +1,8 @@
 const Article = require('../models/articles');
 const cloudinary = require('cloudinary');
-const cloudConfig = require('../config').cloudinary;
+// const cloudConfig = require('../config').cloudinary;
 
-cloudinary.config(process.env.CLOUDINARY_URL || cloudConfig);
+cloudinary.config(process.env.CLOUDINARY_URL);
 
 exports.list = (req, res) => {
   Article.find()
