@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon --exec 'mocha -R min'",
-    "start": "nodemon index.js",
+    "test": "node --exec 'mocha -R min'",
+    "start": "node index.js",
     "clean": "rm ./public/uploads/*"
   },
   "engines": {
