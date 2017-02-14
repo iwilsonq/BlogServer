@@ -22,7 +22,5 @@ app.use(bodyParser.urlencoded({ limit: 2000000, extended: false }));
 router(app);
 
 // Server setup
-const port = process.env.PORT || 3090;
-const server = http.createServer(app);
-server.listen(port);
-console.log('Server listening on:', port);
+app.set('port', process.env.PORT || 3090)
+app.listen(app.get('port'), console.log(`Server listening on http://localhost:${app.get('port')}`));
