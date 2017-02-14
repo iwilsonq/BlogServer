@@ -2,7 +2,7 @@ const Article = require('../models/articles');
 const cloudinary = require('cloudinary');
 const cloudConfig = require('../config').cloudinary;
 
-cloudinary.config(cloudConfig);
+cloudinary.config(process.env.CLOUDINARY_URL || cloudConfig);
 
 exports.list = (req, res) => {
   Article.find()
@@ -11,9 +11,8 @@ exports.list = (req, res) => {
       if (error) {
         return res.status(400).send({ message: error });
       }
-
       res.send(articles);
-    })
+    });
 }
 
 exports.find = (req, res) => {
