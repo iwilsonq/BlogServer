@@ -6,5 +6,5 @@ The backend for a blog I'm making
 Usage
 ```
 npm install
-npm run dev
+npm start
 ```

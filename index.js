@@ -9,6 +9,11 @@ const router = require('./router');
 const mongoose = require('mongoose');
 
 // DB setup
+console.log(process.env.MONGODB_URI);
+console.log(process.env.CLOUDINARY_URL);
+console.log(process.env.PORT);
+console.log(process.env.JWT_SECRET);
+
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/journies');
 
 
