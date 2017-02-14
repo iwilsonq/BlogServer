@@ -9,7 +9,7 @@ const router = require('./router');
 const mongoose = require('mongoose');
 
 // DB setup
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/journies');
 
 
 app.use(express.static('public'));
