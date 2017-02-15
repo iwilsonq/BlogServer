@@ -32,7 +32,6 @@ exports.find = (req, res) => {
 
 exports.create = (req, res) => {
   const formattedContent = JSON.parse(req.body.content).filter(p => p !== "");
-  console.log()
   cloudinary.uploader.upload(req.file.path, result => {
     const article = new Article({
       title: req.body.title,
