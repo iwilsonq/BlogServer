@@ -35,6 +35,7 @@ exports.create = (req, res) => {
   cloudinary.uploader.upload(req.file.path, result => {
     const article = new Article({
       title: req.body.title,
+      subtitle: req.body.subtitle,
       content: formattedContent,
       caption: req.body.caption,
       image: result.url,

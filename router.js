@@ -4,7 +4,7 @@ const Articles = require('./controllers/articles');
 const multer  = require('multer');
 const upload = multer({
   dest:'./public/uploads/',
-  limits: { fileSize: 2000000, files:1 }
+  limits: { fileSize: 2000000, files: 1 }
 });
 
 const passportService = require('./services/passport');
