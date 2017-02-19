@@ -29,4 +29,5 @@ module.exports = function(app) {
 
   app.get('/articles/:articleId/comments', Comment.list);
   app.post('/articles/:articleId/comments', Comment.create);
+  app.delete('/articles/:articleId/comments/:commentId', Comment.destroy);
 }
