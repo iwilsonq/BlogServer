@@ -2,7 +2,12 @@ const Comment = require('../models/comment');
 const Article = require('../models/articles');
 
 exports.list = (req, res) => {
-  res.send('list');
+  Article.findOne({ _id: req.params.articleId })
+    .populate('comments')
+    .exec((err, article) => {
+      if (err) res.status(400).send(err);
+      res.send(article.comments);
+    });
 };
 
 exports.create = (req, res) => {
@@ -13,11 +18,14 @@ exports.create = (req, res) => {
       content: req.body.content,
       // user: req.user._id
     });
+    article.comments.push(comment);
 
-    comment.save(err => {
+    article.save(err => {
       if (err) res.send(err);
-
-      res.send('NEW comment: ' + req.body.content);
-    })
+      comment.save(err => {
+        if (err) res.send(err);
+        res.send('NEW comment: ' + req.body.content);
+      });
+    });
   });
 }
