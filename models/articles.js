@@ -48,7 +48,11 @@ const articleSchema = new Schema({
   likes: {
     type: Number,
     default: 0
-  }
+  },
+  comments: [{
+    type: Schema.Types.ObjectId,
+    ref: 'comment'
+  }]
 });
 
 const Article = mongoose.model('article', articleSchema);

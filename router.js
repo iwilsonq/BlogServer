@@ -1,5 +1,6 @@
 const Authentication = require('./controllers/authentication');
 const Articles = require('./controllers/articles');
+const Comment = require('./controllers/comment');
 
 const multer  = require('multer');
 const upload = multer({
@@ -25,4 +26,7 @@ module.exports = function(app) {
   app.post('/articles', upload.single('image'), Articles.create);
   app.put('/articles/:id', Articles.edit);
   app.delete('/articles/:id', Articles.destroy);
+
+  app.get('/articles/:articleId/comments', Comment.list);
+  app.post('/articles/:articleId/comments', Comment.create);
 }
