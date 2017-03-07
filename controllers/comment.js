@@ -16,7 +16,7 @@ exports.create = (req, res) => {
 
     const comment = new Comment({
       content: req.body.content,
-      // user: req.user._id
+      name: req.body.name
     });
     article.comments.push(comment);
 
@@ -24,7 +24,7 @@ exports.create = (req, res) => {
       if (err) res.send(err);
       comment.save(err => {
         if (err) res.send(err);
-        res.send('NEW comment: ' + req.body.content);
+        res.send('NEW comment: by' + req.body.name);
       });
     });
   });

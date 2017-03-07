@@ -31,7 +31,4 @@ module.exports = function(app) {
   app.get('/articles/:articleId/comments', Comment.list);
   app.post('/articles/:articleId/comments', Comment.create);
   app.delete('/articles/:articleId/comments/:commentId', Comment.destroy);
-
-  app.get('/subscribers', Subscriber.list);
-  app.post('/subscribers', Subscriber.create);
 }
